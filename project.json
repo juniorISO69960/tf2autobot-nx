@@ -1,0 +1,23 @@
+{
+    "name": "tf2autobot",
+    "$schema": "node_modules/nx/schemas/project-schema.json",
+    "targets": {
+        "build": {
+            "executor": "@nx/webpack:webpack",
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "outputPath": "dist/",
+                "main": "src/app.ts",
+                "outputFileName": "main.js",
+                "tsConfig": "tsconfig.json",
+                "webpackConfig": "webpack.config.js",
+                "generatePackageJson": true
+            }
+        },
+        "docker-build": {
+            "dependsOn": ["build"],
+            "command": "docker build -f Dockerfile . -t tf2autobot"
+        }
+    }
+}

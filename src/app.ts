@@ -19,7 +19,7 @@ import fs from 'fs';
 import path from 'path';
 import genPaths from './resources/paths';
 
-if (!fs.existsSync(path.join(__dirname, '../node_modules'))) {
+if (!fs.existsSync(path.join(__dirname, '../node_modules')) && !process.env.DOCKER) {
     /* eslint-disable-next-line no-console */
     console.error('Missing dependencies! Install them by running `npm install`');
     process.exit(1);
